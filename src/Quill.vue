@@ -1,5 +1,14 @@
 <template>
-    <div></div>
+    <div>
+        <slot name="toolbar">
+            <div v-el:toolbar>
+                <button class="ql-bold">B</button>
+                <button class="ql-underline">U</button>
+                <button class="ql-italic">I</button>
+            </div>
+        </slot>
+        <div v-el:quill></div>
+    </div>
 </template>
 
 <script>
@@ -11,7 +20,8 @@
         },
 
         ready() {
-            this.editor = new Quill(this.$el, {
+            this.editor = new Quill(this.$els.quill, {
+                modules: { toolbar: this.$els.toolbar },
                 theme: 'snow',
             })
         }
