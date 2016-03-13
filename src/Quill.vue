@@ -2,9 +2,11 @@
     <div>
         <slot name="toolbar">
             <div v-el:toolbar>
-                <button class="ql-bold">B</button>
-                <button class="ql-underline">U</button>
-                <button class="ql-italic">I</button>
+                <div class="ui icon buttons">
+                    <button class="ui button active ql-bold"><i class="bold icon"></i></button>
+                    <button class="ui button ql-underline"><i class="underline icon"></i></button>
+                    <button class="ui button ql-italic"><i class="text width icon"></i></button>
+                </div>
             </div>
         </slot>
         <div v-el:quill></div>
@@ -13,6 +15,10 @@
 
 <script>
     export default {
+        props: {
+            content: {},
+        },
+
         data() {
             return {
                 editor: {},
@@ -23,6 +29,10 @@
             this.editor = new Quill(this.$els.quill, {
                 modules: { toolbar: this.$els.toolbar },
                 theme: 'snow',
+            })
+
+            this.editor.on('text-change', (delta, source) => {
+                this.content = this.editor.getContents()
             })
         }
     }
