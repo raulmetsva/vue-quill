@@ -15,7 +15,7 @@
                     <a class="ql-format-button ql-bullet"></a>
                     <span class="ql-format-separator"></span>
                     <span title="Text Alignment" class="ql-align ql-picker">
-                        <span class="ql-picker-label ql-active" data-value="left"></span>
+                        <span class="ql-picker-label" data-value="left"></span>
                         <span class="ql-picker-options">
                             <span data-value="left" class="ql-picker-item ql-selected"></span>
                             <span data-value="center" class="ql-picker-item"></span>
@@ -52,6 +52,12 @@
             this.editor.on('text-change', (delta, source) => {
                 this.content = this.editor.getContents()
             })
-        }
+        },
+
+        events: {
+            setContent(content) {
+                this.editor.setContents(content)
+            }
+        },
     }
 </script>
