@@ -1,15 +1,32 @@
 <template>
     <div>
         <slot name="toolbar">
-            <div v-el:toolbar>
-                <div class="ui icon buttons">
-                    <button class="ui button active ql-bold"><i class="bold icon"></i></button>
-                    <button class="ui button ql-underline"><i class="underline icon"></i></button>
-                    <button class="ui button ql-italic"><i class="text width icon"></i></button>
+            <div v-el:toolbar class="ui top attached menu toolbar ql-toolbar ql-snow">
+                <div class="ql-format-group">
+                    <a class="ql-format-button ql-bold"></a>
+                    <span class="ql-format-separator"></span>
+                    <a class="ql-format-button ql-underline"></a>
+                    <span class="ql-format-separator"></span>
+                    <a class="ql-format-button ql-italic"></a>
+                </div>
+                <div class="ql-format-group">
+                    <a class="ql-format-button ql-list"></a>
+                    <span class="ql-format-separator"></span>
+                    <a class="ql-format-button ql-bullet"></a>
+                    <span class="ql-format-separator"></span>
+                    <span title="Text Alignment" class="ql-align ql-picker">
+                        <span class="ql-picker-label ql-active" data-value="left"></span>
+                        <span class="ql-picker-options">
+                            <span data-value="left" class="ql-picker-item ql-selected"></span>
+                            <span data-value="center" class="ql-picker-item"></span>
+                            <span data-value="right" class="ql-picker-item"></span>
+                            <span data-value="justify" class="ql-picker-item"></span>
+                        </span>
+                    </span>
                 </div>
             </div>
         </slot>
-        <div v-el:quill></div>
+        <div class="ui attached segment" v-el:quill></div>
     </div>
 </template>
 
