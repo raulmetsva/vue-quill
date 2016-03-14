@@ -31,6 +31,7 @@
 </template>
 
 <script>
+    const Quill = require('quill')
     export default {
         props: {
             content: {},

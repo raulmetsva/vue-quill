@@ -4,7 +4,9 @@
   "description": "Vue quill component and filter",
   "main": "vue-quill.js",
   "browserify": {
-    "transform": ["vueify"]
+    "transform": [
+      "vueify"
+    ]
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,6 +28,7 @@
   },
   "homepage": "https://github.com/BrockReece/vue-quill#readme",
   "dependencies": {
+    "quill": "^0.20.1",
     "quill-render": "^1.0.5"
   }
 }
