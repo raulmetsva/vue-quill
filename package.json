@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Vue quill component and filter",
   "main": "vue-quill.js",
+  "browserify": {
+    "transform": ["vueify"]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/BrockReece/vue-quill/issues"
   },
-  "homepage": "https://github.com/BrockReece/vue-quill#readme"
+  "homepage": "https://github.com/BrockReece/vue-quill#readme",
+  "dependencies": {
+    "quill-render": "^1.0.5"
+  }
 }
