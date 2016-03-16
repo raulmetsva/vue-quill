@@ -55,15 +55,15 @@
         },
 
         events: {
-            setContent(content) {
+            'set-content' : function (content) {
                 this.editor.setContents(content)
             },
 
-            setHtml(html) {
+            'set-html' : function (html) {
                 this.editor.setHtml(html)
             },
 
-            focusEditor() {
+            'focus-editor' : function () {
                 this.editor.focus()
             }
         },
