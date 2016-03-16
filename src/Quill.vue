@@ -35,6 +35,9 @@
     export default {
         props: {
             content: {},
+            output : {
+                default : 'delta'
+            }
         },
 
         data() {
@@ -49,8 +52,14 @@
                 theme: 'snow',
             })
 
+            if (this.output != 'delta') {
+                this.editor.setHTML(this.content);
+            } else {
+                this.editor.setContents(this.content);
+            }
+                
             this.editor.on('text-change', (delta, source) => {
-                this.content = this.editor.getContents()
+                this.content = this.output != 'delta' ? this.editor.getHTML() : this.editor.getContents()
             })
         },
 
