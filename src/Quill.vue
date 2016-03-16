@@ -64,6 +64,12 @@
                 this.editor.on('text-change', (delta, source) => {
                     this.content = this.output != 'delta' ? this.editor.getHTML() : this.editor.getContents()
                 })
+
+                if (typeof this.author !== 'undefined') {
+                    this.editor.addModule('authorship', {
+                        authorId: this.author,
+                    })
+                }
             },
 
             events: {
