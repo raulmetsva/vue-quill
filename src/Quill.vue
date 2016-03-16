@@ -57,6 +57,14 @@
         events: {
             setContent(content) {
                 this.editor.setContents(content)
+            },
+
+            setHtml(html) {
+                this.editor.setHtml(html)
+            },
+
+            focusEditor() {
+                this.editor.focus()
             }
         },
     }
