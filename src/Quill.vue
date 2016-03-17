@@ -71,6 +71,7 @@
                 }
 
                 this.editor.on('text-change', (delta, source) => {
+                    this.$dispatch('text-change', this.editor, delta, source)
                     this.content = this.output != 'delta' ? this.editor.getHTML() : this.editor.getContents()
                 })
 
