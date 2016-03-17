@@ -35,6 +35,11 @@
         export default {
             props: {
                 content: {},
+                author: {},
+                formats: {
+                    type: Array,
+                    default: [],
+                },
                 output : {
                     default : 'delta'
                 },
@@ -55,6 +60,10 @@
                     theme: 'snow',
                 })
 
+                this.formats.map((format) => {
+                    this.editor.addFormat(format.name, format.options)
+                })
+
                 if (this.output != 'delta') {
                     this.editor.setHTML(this.content);
                 } else {
@@ -63,6 +72,10 @@
 
                 this.editor.on('text-change', (delta, source) => {
                     this.content = this.output != 'delta' ? this.editor.getHTML() : this.editor.getContents()
+                })
+
+                this.editor.on('selection-change', (range) => {
+                    this.$dispatch('selection-change', this.editor, range)
                 })
 
                 if (typeof this.author !== 'undefined') {
