@@ -38,7 +38,9 @@
                 author: {},
                 formats: {
                     type: Array,
-                    default: [],
+                    default() {
+                        return []
+                    },
                 },
                 output : {
                     default : 'delta'
