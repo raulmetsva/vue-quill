@@ -42,6 +42,12 @@
                         return []
                     },
                 },
+                keyBindings: {
+                    type: Array,
+                    default() {
+                        return []
+                    },
+                },
                 output : {
                     default : 'delta'
                 },
@@ -84,6 +90,14 @@
                 if (typeof this.author !== 'undefined') {
                     this.editor.addModule('authorship', {
                         authorId: this.author,
+                    })
+                }
+
+                if (this.keyBindings.length) {
+                    const keyboard = this.editor.getModule('keyboard')
+
+                    this.keyBindings.map((binding) => {
+                        keyboard.addHotkey({ key: binding.key, metaKey: true }, binding.method.bind(this))
                     })
                 }
             },
