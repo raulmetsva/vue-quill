@@ -13,20 +13,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BrockReece/vue-quill.git"
+    "url": "git+https://github.com/CroudSupport/vue-quill.git"
   },
   "keywords": [
     "vue",
     "quill",
     "js",
-    "plugin"
+    "plugin",
+    "text",
+    "editor"
   ],
   "author": "Brock Reece",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BrockReece/vue-quill/issues"
+    "url": "https://github.com/CroudSupport/vue-quill/issues"
   },
-  "homepage": "https://github.com/BrockReece/vue-quill#readme",
+  "homepage": "https://github.com/CroudSupport/vue-quill#readme",
   "dependencies": {
     "quill": "^0.20.1",
     "quill-render": "^1.0.5"
