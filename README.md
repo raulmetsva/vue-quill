@@ -3,7 +3,7 @@ A vue component wrapping the quill editor
 
 ## Installation
 ```
-npm install --save https://github.com/CroudSupport/vue-quill.git
+npm install --save vue-quill
 ```
 
 ## Usage
