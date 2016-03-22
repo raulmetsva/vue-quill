@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </slot>
-            <div class="ui attached segment" v-el:quill></div>
+            <div class="ui attached segment" v-el:quill @click="focusEditor"></div>
         </div>
     </template>
 
@@ -112,10 +112,20 @@
                 },
 
                 'focus-editor' : function () {
+                    this.focusEditor()
+                }
+
+            },
+
+            methods : {
+
+                focusEditor() {
+
                     this.editor.focus()
 
-                    this.editor.setSelection(this.editor.getLength()-1, this.editor.getLength());
+                    this.editor.setSelection(this.editor.getLength()-1, this.editor.getLength())
                 }
+
             },
         }
     </script>
