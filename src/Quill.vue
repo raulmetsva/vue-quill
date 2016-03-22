@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </slot>
-            <div class="ui attached segment" v-el:quill @click="focusEditor"></div>
+            <div class="ui attached segment" v-el:quill @click.prevent="focusEditor"></div>
         </div>
     </template>
 
@@ -120,16 +120,18 @@
 
                 focusEditor(e) {
 
-                    let classList = e.srcElement.classList, isSegment = false;
+                    if (e && e.srcElement) {
+                        let classList = e.srcElement.classList, isSegment = false;
 
-                    classList.forEach((className) => {
-                        if (className === 'segment') {
-                            isSegment = true
-                            return
-                        }
-                    })
+                        classList.forEach((className) => {
+                            if (className === 'segment') {
+                                isSegment = true
+                                return
+                            }
+                        })
 
-                    if (!isSegment) return;
+                        if (!isSegment) return;
+                    }
 
                     this.editor.focus()
 
