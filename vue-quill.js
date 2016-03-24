@@ -19,7 +19,7 @@ module.exports = {
             }).join(' ')
 
             if (typeof limit !== 'undefined' && text.length > limit) {
-                return `${text.substring(0, parseInt(limit, 10))}...`
+                return text.substring(0, parseInt(limit, 10)) + '...'
             }
 
             return text
