@@ -11,10 +11,26 @@ Install the vue plugin
 ```js
 Vue.use(require('vue-quill'))
 ```
-
-Then you can use the quill component and custom filter for converting delta object to raw html 
+### Component
 ```html
 <quill :content.sync="content"></quill>
+```
+You may want to initialize the synced variable as a valid delta object too
+
+```js
+data() {
+    return {
+        content: {
+            ops: [],
+        },
+    }
+}
+```
+
+### Custom Filter
+The plugin also installs a custom filter for converting a delta object to raw html
+
+```html
 {{{ content | quill }}}
 ```
 
