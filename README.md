@@ -6,6 +6,11 @@ A vue component wrapping the quill editor
 npm install --save vue-quill
 ```
 
+You will also need to include the following css file in your project 
+```html
+<link href="http://cdn.quilljs.com/latest/quill.snow.css" rel="stylesheet">
+```
+
 ## Usage
 Install the vue plugin
 ```js
