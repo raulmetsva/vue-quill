@@ -1,7 +1,7 @@
     <template>
         <div>
-            <slot name="toolbar">
-                <div v-el:toolbar class="ui top attached menu toolbar ql-toolbar ql-snow">
+            <div v-el:toolbar class="ui top attached menu toolbar ql-toolbar ql-snow">
+                <slot name="toolbar">
                     <div class="ql-format-group">
                         <a class="ql-format-button ql-bold"></a>
                         <span class="ql-format-separator"></span>
@@ -24,8 +24,8 @@
                             </span>
                         </span>
                     </div>
-                </div>
-            </slot>
+                </slot>
+            </div>
             <div class="ui attached segment" v-el:quill @click.prevent="focusEditor"></div>
         </div>
     </template>
