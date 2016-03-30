@@ -108,7 +108,7 @@
                 },
 
                 'set-html' : function (html) {
-                    this.editor.setHtml(html)
+                    this.editor.setHTML(html)
                 },
 
                 'focus-editor' : function () {
