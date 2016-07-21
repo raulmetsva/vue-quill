@@ -64,7 +64,7 @@
 
             ready() {
                 this.editor = new Quill(this.$els.quill, {
-                    modules: { toolbar: this.$els.toolbar },
+                    modules: { toolbar: this.$els.toolbar, 'link-tooltip': true },
                     theme: 'snow',
                 })
 
