@@ -6,7 +6,7 @@ A vue component wrapping the quill editor
 npm install --save vue-quill
 ```
 
-You will also need to include the following css file in your project 
+You will also need to include the following css file in your project
 ```html
 <link href="http://cdn.quilljs.com/latest/quill.snow.css" rel="stylesheet">
 ```
@@ -32,6 +32,26 @@ data() {
 }
 ```
 
+### Configuration
+```html
+<quill :content.sync="content" :config="config"></quill>
+```
+You can also provide a config object as described in http://quilljs.com/docs/configuration/
+
+```js
+data() {
+    return {
+        content: {
+            ops: [],
+        },
+        config: {
+            readOnly: true,
+            placeholder: 'Compose an epic...',
+        },
+    }
+}
+```
+
 ### Custom Filter
 The plugin also installs a custom filter for converting a delta object to raw html
 
@@ -40,7 +60,7 @@ The plugin also installs a custom filter for converting a delta object to raw ht
 ```
 
 ## Options
-By default, the component outputs the content as a delta object, you can pass in a prop to return raw html 
+By default, the component outputs the content as a delta object, you can pass in a prop to return raw html
 ```html
 <quill :content.sync="content" output="html"></quill>
 ```
