@@ -8,7 +8,7 @@ npm install --save vue-quill
 
 You will also need to include the following css file in your project
 ```html
-<link href="http://cdn.quilljs.com/latest/quill.snow.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/quill/0.20.1/quill.snow.min.css" rel="stylesheet">
 ```
 
 ## Usage
