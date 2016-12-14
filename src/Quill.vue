@@ -77,7 +77,7 @@
         },
 
         ready() {
-            console.log(this.config)
+        
             this.editor = new Quill(this.$els.quill, this.config)
             this.editor.addModule('toolbar', this.$els.toolbar)
 
@@ -85,10 +85,12 @@
                 this.editor.addFormat(format.name, format.options)
             })
 
-            if (this.output != 'delta') {
-                this.editor.setHTML(this.content);
-            } else {
-                this.editor.setContents(this.content);
+            if (this.content && this.content !== '') {
+	            if (this.output != 'delta') {
+	                this.editor.setHTML(this.content);
+	            } else {
+	                this.editor.setContents(this.content);
+	            }
             }
 
             this.editor.on('text-change', (delta, source) => {
@@ -121,7 +123,8 @@
             },
 
             'set-html' : function (html) {
-                this.editor.setHTML(html)
+            	if (!html || html === '') return;
+                	this.editor.setHTML(html)
             },
 
             'focus-editor' : function () {
