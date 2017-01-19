@@ -77,7 +77,7 @@
         },
 
         ready() {
-        
+
             this.editor = new Quill(this.$els.quill, this.config)
             this.editor.addModule('toolbar', this.$els.toolbar)
 
@@ -112,6 +112,10 @@
                 const keyboard = this.editor.getModule('keyboard')
 
                 this.keyBindings.map((binding) => {
+                    if (binding.remove) {
+                        return delete keyboard.hotkeys[binding.key]
+                    }
+
                     keyboard.addHotkey({ key: binding.key, metaKey: true }, binding.method.bind(this))
                 })
             }
