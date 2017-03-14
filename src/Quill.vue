@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-el:toolbar class="ui top attached menu toolbar ql-toolbar ql-snow">
+        <div ref="toolbar" class="ui top attached menu toolbar ql-toolbar ql-snow">
             <slot name="toolbar">
                 <div class="ql-format-group">
                     <a class="ql-format-button ql-bold"></a>
@@ -26,13 +26,17 @@
                 </div>
             </slot>
         </div>
-        <div class="ui attached segment" v-el:quill @click.prevent="focusEditor"></div>
+        <div class="ui attached segment" ref="quill" @click.prevent="focusEditor"></div>
     </div>
 </template>
 
 <script>
     const Quill = require('quill')
     export default {
+        model: {
+            prop: 'content',
+        },
+
         props: {
             content: {},
 
@@ -60,6 +64,10 @@
                 default : null
             },
 
+            bus: {
+                default: false,
+            },
+
             config: {
                 default() {
                     return {
@@ -76,28 +84,29 @@
             }
         },
 
-        ready() {
-            console.log(this.config)
-            this.editor = new Quill(this.$els.quill, this.config)
-            this.editor.addModule('toolbar', this.$els.toolbar)
+        mounted() {
+            this.editor = new Quill(this.$refs.quill, this.config)
+            this.editor.addModule('toolbar', this.$refs.toolbar)
 
             this.formats.map((format) => {
                 this.editor.addFormat(format.name, format.options)
             })
 
-            if (this.output != 'delta') {
-                this.editor.setHTML(this.content);
-            } else {
-                this.editor.setContents(this.content);
+            if (this.content && this.content !== '') {
+	            if (this.output != 'delta') {
+	                this.editor.setHTML(this.content);
+	            } else {
+	                this.editor.setContents(this.content);
+	            }
             }
 
             this.editor.on('text-change', (delta, source) => {
-                this.$dispatch('text-change', this.editor, delta, source)
-                this.content = this.output != 'delta' ? this.editor.getHTML() : this.editor.getContents()
+                this.$emit('text-change', this.editor, delta, source)
+                this.$emit('input', this.output != 'delta' ? this.editor.getHTML() : this.editor.getContents())
             })
 
             this.editor.on('selection-change', (range) => {
-                this.$dispatch('selection-change', this.editor, range)
+                this.$emit('selection-change', this.editor, range)
             })
 
             if (typeof this.author !== 'undefined') {
@@ -110,22 +119,22 @@
                 const keyboard = this.editor.getModule('keyboard')
 
                 this.keyBindings.map((binding) => {
+                    if (binding.remove) {
+                        return delete keyboard.hotkeys[binding.key]
+                    }
+
                     keyboard.addHotkey({ key: binding.key, metaKey: true }, binding.method.bind(this))
                 })
             }
-        },
 
-        events: {
-            'set-content' : function (content) {
-                this.editor.setContents(content)
-            },
+            if (this.bus) {
+                this.bus.$on('focus-editor', () => this.focusEditor())
+                this.bus.$on('set-content', (content) => this.editor.setContents(content))
+                this.bus.$on('set-html', (html) => {
+                    if (!html || html === '') return;
 
-            'set-html' : function (html) {
-                this.editor.setHTML(html)
-            },
-
-            'focus-editor' : function () {
-                this.focusEditor()
+                    this.editor.setHTML(html)
+                })
             }
         },
 
