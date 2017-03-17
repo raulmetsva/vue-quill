@@ -7,6 +7,7 @@
 <script>
     import _ from 'lodash'
     import Quill from 'quill'
+    import GrammarlyInline from './formats/GrammarlyInline'
 
     export default {
         model: {
@@ -76,6 +77,8 @@
                     })
                 }
             }
+
+            Quill.register(GrammarlyInline)
 
             this.editor = new Quill(this.$refs.quill, _.defaultsDeep(this.config, this.defaultConfig))
 
