@@ -72,7 +72,7 @@
 
             Quill.register(GrammarlyInline)
 
-            this.editor = new Quill(this.$refs.quill, _.defaultsDeep(this.config, this.defaultConfig))
+            this.editor = new Quill(this.$els.quill, _.defaultsDeep(this.config, this.defaultConfig))
 
             if (this.content && this.content !== '') {
 	            if (this.output != 'delta') {

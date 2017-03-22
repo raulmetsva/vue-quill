@@ -1,4 +1,4 @@
-import Quill from 'quill'
+const Quill = require('quill')
 
 const Inline = Quill.import('blots/inline')
 
@@ -7,4 +7,4 @@ GrammarlyInline.tagName = 'G'
 GrammarlyInline.blotName = 'grammarly-inline'
 GrammarlyInline.className = 'gr_'
 
-export default GrammarlyInline
+module.exports = GrammarlyInline
