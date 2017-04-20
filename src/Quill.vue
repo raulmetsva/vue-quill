@@ -75,11 +75,11 @@
             this.editor = new Quill(this.$els.quill, _.defaultsDeep(this.config, this.defaultConfig))
 
             if (this.content && this.content !== '') {
-	            if (this.output != 'delta') {
-	                this.editor.pasteHTML(this.content)
-	            } else {
-	                this.editor.setContents(this.content)
-	            }
+                if (this.output != 'delta') {
+                    this.editor.pasteHTML(this.content)
+                } else {
+                    this.editor.setContents(this.content)
+                }
             }
 
             this.editor.on('text-change', (delta, source) => {
@@ -98,8 +98,8 @@
             },
 
             'set-html': function (html) {
-            	if (!html || html === '') return;
-                	this.editor.setHTML(html)
+                if (!html || html === '') return;
+              this.editor.pasteHTML(html)
             },
 
             'focus-editor': function () {
