@@ -36,6 +36,11 @@
                     return {}
                 },
             },
+
+            beforeLoad: {
+                type: Function,
+                default: function (Quill) {},
+            },
         },
 
         data() {
@@ -70,6 +75,7 @@
                 }
             }
 
+            this.beforeLoad(Quill)
             Quill.register(GrammarlyInline)
 
             this.editor = new Quill(this.$els.quill, _.defaultsDeep(this.config, this.defaultConfig))
