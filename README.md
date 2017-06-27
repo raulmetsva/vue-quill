@@ -4,12 +4,17 @@ A vue component wrapping the quill editor
 ## Installation
 ```
 npm install --save vue-quill
+-or-
+yarn install vue-quill
 ```
 
 You will also need to include the following css file in your project
 ```html
-<link href="https://cdnjs.cloudflare.com/ajax/libs/quill/0.20.1/quill.snow.min.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.2.6/quill.snow.css" rel="stylesheet">
 ```
+
+## Vue 1
+For Vue 1 components use v0.1.5 or earlier
 
 ## Usage
 Install the vue plugin
@@ -18,7 +23,7 @@ Vue.use(require('vue-quill'))
 ```
 ### Component
 ```html
-<quill :content.sync="content"></quill>
+<quill v-model="content"></quill>
 ```
 You may want to initialize the synced variable as a valid delta object too
 
@@ -34,7 +39,7 @@ data() {
 
 ### Configuration
 ```html
-<quill :content.sync="content" :config="config"></quill>
+<quill v-model="content" :config="config"></quill>
 ```
 You can also provide a config object as described in http://quilljs.com/docs/configuration/
 
@@ -52,17 +57,10 @@ data() {
 }
 ```
 
-### Custom Filter
-The plugin also installs a custom filter for converting a delta object to raw html
-
-```html
-{{{ content | quill }}}
-```
-
 ## Options
 By default, the component outputs the content as a delta object, you can pass in a prop to return raw html
 ```html
-<quill :content.sync="content" output="html"></quill>
+<quill v-model="content" output="html"></quill>
 ```
 
 ## Custom Formats
@@ -93,16 +91,19 @@ keyBindings: [
 ```
 
 ## Events
-This quill component dispatches events when the text or selection changes on the quill editor, you can listen for these on the parent component by declaring an event similar to this
-```js
-events: {
-    'selection-change'(editor, range) {
+This quill component emits events when the text or selection changes on the quill editor
+```html
+<quill v-model="content" @selection-change="selectionChange"></quill>
+
+<script>
+methods: {
+    selectionChange(editor, range) {
         if (range) {
             if (range.start !== range.end) {
                 this.selectedText = editor.getText(range.start, range.end)
                 editor.formatText(range, 'custom', 'hello world')
             }
         }
-    }
+    },
 },
 ```
