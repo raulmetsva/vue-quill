@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import _ from 'lodash'
+    import defaultsDeep from 'lodash.defaultsdeep'
     import Quill from 'quill'
     import GrammarlyInline from './formats/GrammarlyInline'
 
@@ -80,7 +80,7 @@
 
             Quill.register(GrammarlyInline)
 
-            this.editor = new Quill(this.$refs.quill, _.defaultsDeep(this.config, this.defaultConfig))
+            this.editor = new Quill(this.$refs.quill, defaultsDeep(this.config, this.defaultConfig))
 
             if (this.content && this.content !== '') {
 	            if (this.output != 'delta') {
