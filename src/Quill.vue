@@ -108,6 +108,14 @@
                     this.editor.root.innerHTML = html
                 })
             }
+
+            this.$on('focus-editor', () => this.focusEditor())
+            this.$on('set-content', (content) => this.editor.setContents(content))
+            this.$on('set-html', (html) => {
+                if (!html || html === '') return
+
+                this.editor.root.innerHTML = html
+            })
         },
 
         methods: {
