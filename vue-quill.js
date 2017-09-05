@@ -1,5 +1,5 @@
-var Quill = require('./src/Quill.vue'),
-    render = require('quill-render');
+import render from 'quill-render'
+import Quill from './src/Quill.vue'
 
 module.exports = {
     install: function (Vue, options) {
