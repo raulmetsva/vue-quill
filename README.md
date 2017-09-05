@@ -19,7 +19,10 @@ For Vue 1 components use v0.1.5 or earlier
 ## Usage
 Install the vue plugin
 ```js
-Vue.use(require('vue-quill'))
+import Vue from 'vue'
+import VueQuill from 'vue-quill'
+
+Vue.use(VueQuill)
 ```
 ### Component
 ```html
