@@ -1,7 +1,7 @@
 import render from 'quill-render'
 import Quill from './src/Quill.vue'
 
-module.exports = {
+export default {
     install: function (Vue, options) {
         Vue.component('quill', Quill);
 
