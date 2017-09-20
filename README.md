@@ -1,4 +1,6 @@
 # vue-quill
+[![npm version](https://badge.fury.io/js/vue-quill.svg)](https://badge.fury.io/js/vue-quill)
+
 A vue component wrapping the quill editor
 
 ## Installation
