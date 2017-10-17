@@ -7,7 +7,7 @@ A vue component wrapping the quill editor
 ```
 npm install --save vue-quill
 -or-
-yarn install vue-quill
+yarn add vue-quill
 ```
 
 You will also need to include the following css file in your project
