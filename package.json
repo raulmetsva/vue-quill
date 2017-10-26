@@ -5,6 +5,7 @@
   "main": "vue-quill.js",
   "browserify": {
     "transform": [
+      "babelify",
       "vueify"
     ]
   },
