@@ -78,6 +78,10 @@
                 }
             }
 
+            if (this.config.modules && this.config.modules.toolbar) {
+                this.defaultConfig.modules.toolbar = []
+            }
+
             Quill.register(GrammarlyInline)
 
             this.editor = new Quill(this.$refs.quill, defaultsDeep(this.config, this.defaultConfig))
