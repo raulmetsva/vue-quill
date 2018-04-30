@@ -3,6 +3,9 @@
 
 A vue component wrapping the quill editor
 
+## Demo
+You can view a basic demo of this component in this [CodeSandbox](https://codesandbox.io/s/nnw7rwx48m)
+
 ## Installation
 ```
 npm install --save vue-quill
