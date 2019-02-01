@@ -139,7 +139,6 @@
                 }
 
                 this.editor.focus()
-                this.editor.setSelection(this.editor.getLength()-1, this.editor.getLength())
             }
         },
 
